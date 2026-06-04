@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="assets/logo.png" />
+    <link rel="stylesheet" href="task-five.css" />
+    <title>Multi Converter</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="assets/logo.png" alt="Logo" />
+        <h1>multi converter</h1>
+      </div>
+      <div class="nav-links">
+        <a href="#age-to-days">Age to Days</a>
+        <a href="#hours-to-seconds">Hours to Seconds</a>
+        <a href="#next-number">Next Number</a>
+        <a href="#name-capitalizer">Name Capitalizer</a>
+        <a href="#bmi-calculator">BMI Calculator</a>
+        <a href="#random-array">Random Array Picker</a>
+        <a href="#addition">Addition</a>
+      </div>
+    </nav>
+
+    <div class="wellcome">
+      <marquee behavior="scroll" direction="left">
+        Welcome to the Multi Converter!
+      </marquee>
+    </div>
+
+    <main>
+      <section id="age-to-days" class="heading">
+        <h1>1️⃣ Age to Days Converter</h1>
+        <div class="container">
+          <div class="task-card">
+            <h2>Age to Days Converter</h2>
+            <div class="form-group">
+              <label for="age">Enter your age (in years):</label>
+              <input type="number" id="age" placeholder="e.g., 25" min="0" step="any" />
+            </div>
+            <button onclick="ageToDay()">Convert to Days</button>
+            <div id="ageResult" class="result">
+              <span class="result-placeholder">Age in days:</span>
+              <span class="result-value" id="ageResultValue"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="hours-to-seconds" class="heading">
+        <h1>2️⃣ Hours to Seconds Converter</h1>
+        <div class="container">
+          <div class="task-card">
+            <h2>Hours to Seconds Converter</h2>
+            <div class="form-group">
+              <label for="hours">Enter hours:</label>
+              <input type="number" id="hours" placeholder="e.g., 2.5" min="0" step="any" />
+            </div>
+            <button onclick="convertHoursToSeconds()">Convert to Seconds</button>
+            <div id="hoursResult" class="result">
+              <span class="result-placeholder">Seconds:</span>
+              <span class="result-value" id="hoursResultValue"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="next-number" class="heading">
+        <h1>3️⃣ Find Number Next to a Number</h1>
+        <div class="container">
+          <div class="task-card">
+            <h2>Find Number Next to a Number</h2>
+            <div class="sub-tabs">
+              <button id="array-button" class="active" onclick="switchtab('array')">Array Search</button>
+              <button id="single-button" onclick="switchtab('single')">Single Value</button>
+            </div>
+
+            <div class="array-search">
+              <div class="form-group">
+                <label for="arrayInput">Enter array (comma-separated):</label>
+                <input type="text" id="arrayInput" placeholder="e.g., 1,5,10,15,20" />
+              </div>
+              <div class="form-group">
+                <label for="searchValue">Find number next to:</label>
+                <input type="number" id="searchValue" placeholder="e.g., 10" step="any" />
+              </div>
+              <button onclick="findNextInArray()">Find Next</button>
+              <div id="arrayFindResult" class="result">
+                <span class="result-placeholder">Next number:</span>
+                <span class="result-value" id="arrayFindResultValue"></span>
+              </div>
+            </div>
+
+            <div class="single-search">
+              <div class="form-group">
+                <label for="singleInput">Enter a number:</label>
+                <input type="number" id="singleInput" placeholder="e.g., 42" step="any" />
+              </div>
+              <div class="form-group">
+                <label for="nextCondition">Condition:</label>
+                <select id="nextCondition">
+                  <option value="increment">Next (n + 1)</option>
+                  <option value="decrement">Previous (n - 1)</option>
+                </select>
+              </div>
+              <button onclick="calculateNext()">Calculate Next</button>
+              <div id="singleFindResult" class="result">
+                <span class="result-placeholder">Result:</span>
+                <span class="result-value" id="singleFindResultValue"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="name-capitalizer" class="heading">
+        <h1>4️⃣ Name Capitalizer</h1>
+        <div class="container">
+          <div class="task-card">
+            <h2>Capitalize First Letter</h2>
+            <div class="form-group">
+              <label for="nameInput">Enter your name in lowercase only:</label>
+              <input type="text" id="nameInput" placeholder="e.g., john" />
+            </div>
+            <button onclick="capitalizeName()">Capitalize Name</button>
+            <div id="nameResult" class="result">
+              <span class="result-placeholder">Capitalized name:</span>
+              <span class="result-value" id="nameResultValue"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bmi-calculator" class="heading">
+        <h1>5️⃣ BMI Calculator</h1>
+        <div class="container">
+          <div class="task-card">
+            <h2>Body Mass Index</h2>
+            <div class="form-group">
+              <label for="weightInput">Enter weight (kg):</label>
+              <input type="number" id="weightInput" placeholder="e.g., 70" step="any" min="0" />
+            </div>
+            <div class="form-group">
+              <label for="heightInput">Enter height (meters):</label>
+              <input type="number" id="heightInput" placeholder="e.g., 1.75" step="any" min="0" />
+            </div>
+            <button onclick="calculateBMI()">Calculate BMI</button>
+            <div id="bmiResult" class="result">
+              <span class="result-placeholder">Your BMI:</span>
+              <span class="result-value" id="bmiResultValue"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="random-array" class="heading">
+        <h1>6️⃣ Random Array Picker</h1>
+        <div class="container">
+          <div class="task-card">
+            <h2>Pick First and Last Element</h2>
+            <button onclick="generateRandomArray()">Generate Random Array</button>
+            <div id="arrayResult" class="result">
+              <span class="result-placeholder">Array:</span>
+              <span class="result-value" id="arrayResultValue"></span>
+            </div>
+            <div id="firstLastResult" class="result">
+              <span class="result-placeholder">First and last:</span>
+              <span class="result-value" id="firstLastResultValue"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="addition" class="heading">
+        <h1>7️⃣ Addition with Event Handling</h1>
+        <div class="container">
+          <div class="task-card">
+            <h2>Add Two Numbers</h2>
+            <div class="form-group">
+              <label for="addFirst">First number:</label>
+              <input type="number" id="addFirst" placeholder="Enter integer" step="1" />
+            </div>
+            <div class="form-group">
+              <label for="addSecond">Second number:</label>
+              <input type="number" id="addSecond" placeholder="Enter integer" step="1" />
+            </div>
+            <div class="form-group">
+              <label for="addResult">Sum:</label>
+              <input type="text" id="addResult" readonly placeholder="Result appears here" />
+            </div>
+            <div class="result show">
+              <span class="result-show-placeholder" >Note:</span>
+              <span class="result-value">Type in the first box to see NaN, then enter the second number to show the sum.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="task-five.js"></script>
+  </body>
+</html>
+
+
+    

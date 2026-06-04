@@ -3,7 +3,13 @@ function ageToDay(){
   let age = parseFloat(document.getElementById("age").value);
   let day = Math.floor(age * 365.25);
 
-  document.getElementById("ageResultValue").innerHTML = day;
+  if( age <= 0 || isNaN(age) ){
+    document.getElementById("ageResultValue").innerHTML = "Invalid age!";
+  }
+ else{
+     document.getElementById("ageResultValue").innerHTML = day;
+ }
+ 
 }
 
 
@@ -12,7 +18,14 @@ function ageToDay(){
 function convertHoursToSeconds(){
     let hour=parseFloat(document.getElementById("hours").value);
     let sec= Math.floor(hour * 3600);
-    document.getElementById("hoursResultValue").innerHTML=sec;
+    
+    if(hour <=0 || isNaN(hour)){
+        document.getElementById('hoursResultValue').innerHTML = "Invalid hour!";
+    }
+    else{
+       document.getElementById("hoursResultValue").innerHTML=sec;
+    }
+   
 }
 
 
@@ -70,32 +83,52 @@ function findNextInArray() {
 
 
 
-
 function calculateNext() {
 
-    let value = Number(document.getElementById('singleInput').value);
+    let inputValue = document.getElementById('singleInput').value;
+    let value = Number(inputValue);
     let condition = document.getElementById('nextCondition').value;
     let result = document.getElementById('singleFindResultValue');
 
-    if(condition === 'increment'){
+    if(inputValue === "" || isNaN(value)){
+
+        result.innerHTML = "Invalid number!";
+    }
+
+    else if(condition === 'increment') {
+
         result.innerText = value + 1;
     }
 
     else if(condition === 'decrement'){
-        result.innerText = value -1;
-    }
 
+        result.innerText = value - 1;
+    }
 }
+
+    
+
+
 
 
 function capitalizeName() {
 
     let name = document.getElementById('nameInput').value;
-    let resultName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    let words = name.split(" ");
+    let resultName = "";
 
-    document.getElementById('nameResultValue').innerText = resultName;
+    for(let i = 0; i < words.length; i++){
+
+        let word = words[i];
+
+        let capitalized =word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+
+        resultName += capitalized + " ";
+    }
+
+    document.getElementById('nameResultValue').innerText =
+        resultName;
 }
-
 
 function calculateBMI(){
 
@@ -103,9 +136,17 @@ function calculateBMI(){
   let height = Number(document.getElementById('heightInput').value);
   let result = document.getElementById('bmiResultValue');
 
-  let bmi = weight / (height * height);
+  if(isNaN(weight) || isNaN(height) || height <= 0 || weight <= 0){
 
-  result.innerHTML = bmi.toFixed(2);
+    result.innerHTML = "Invalid weight or height!";
+  }
+  else{
+
+    let bmi = weight / (height * height);
+
+    result.innerHTML = bmi.toFixed(2);
+  }
+
 }
 
 
@@ -146,11 +187,13 @@ function sum(){
     let firstnumber = Number(firstInput.value);
     let secondnumber = Number(secondInput.value);
 
-    if(firstInput.value === "" || secondInput.value === ""){
+    if(firstInput.value === "" || secondInput.value === "" || isNaN(firstnumber) || isNaN(secondnumber)){
         result.value = "NaN";
     }
     else{
         result.value = firstnumber + secondnumber;
     }
 }
+
+
 
